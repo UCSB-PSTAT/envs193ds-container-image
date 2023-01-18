@@ -4,7 +4,7 @@ LABEL maintainer="LSIT Systems <lsitops@ucsb.edu>"
 
 USER root
 
-RUN R -e "install.packages(c('janitor', 'lubridate', 'here', 'palmerpenguins', 'beep'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
+RUN R -e "install.packages(c('janitor', 'lubridate', 'here', 'palmerpenguins'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
 USER $NB_USER
 
