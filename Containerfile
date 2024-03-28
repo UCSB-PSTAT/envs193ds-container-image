@@ -12,7 +12,7 @@ RUN mamba install -c conda-forge \
     r-corrplot \
     r-dharma \
     r-flextable \
-    r-ggally
+    r-ggally \
     r-ggeffects \
     r-glmmtmb \
     r-magick \
