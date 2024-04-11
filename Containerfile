@@ -15,6 +15,8 @@ RUN mamba install -c conda-forge \
     r-ggally \
     r-ggeffects \
     r-glmmtmb \
+    r-hmisc\
+    r-janitor \
     r-magick \
     r-mumin \
     r-naniar \
