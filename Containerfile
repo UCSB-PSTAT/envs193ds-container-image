@@ -7,7 +7,7 @@ USER root
 ENV TZ America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN mamba install -c conda-forge \
+RUN conda install -y \
     r-aiccmodavg \
     r-corrplot \
     r-dharma \
