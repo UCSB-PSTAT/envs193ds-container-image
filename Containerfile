@@ -7,7 +7,7 @@ USER root
 ENV TZ America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN mamba install -c conda-forge \
+RUN conda install -y \
     r-aiccmodavg \
     r-corrplot \
     r-dharma \
@@ -24,10 +24,11 @@ RUN mamba install -c conda-forge \
     r-performance \
     r-plotly \
     r-skimr \
-    r-wesanderson && \
-    /usr/local/bin/fix-permissions "${CONDA_DIR}" || true
+    r-wesanderson
 
 RUN R -e "install.packages(c('lterdatasampler', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
+
+RUN /usr/local/bin/fix-permissions "${CONDA_DIR}" || true
 
 
 USER $NB_USER
