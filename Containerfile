@@ -24,10 +24,11 @@ RUN mamba install -c conda-forge \
     r-performance \
     r-plotly \
     r-skimr \
-    r-wesanderson && \
-    /usr/local/bin/fix-permissions "${CONDA_DIR}" || true
+    r-wesanderson
 
 RUN R -e "install.packages(c('lterdatasampler', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
+
+RUN /usr/local/bin/fix-permissions "${CONDA_DIR}" || true
 
 
 USER $NB_USER
