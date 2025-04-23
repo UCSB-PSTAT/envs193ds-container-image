@@ -28,6 +28,7 @@ RUN conda install -y \
     r-modelsummary\
     r-mumin\
     r-naniar\
+    r-paletteer\
     r-palmerpenguins\
     r-performance\
     r-plotly\
