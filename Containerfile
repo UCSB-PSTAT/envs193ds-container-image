@@ -8,25 +8,33 @@ ENV TZ America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN conda install -y \
-    r-aiccmodavg \
-    r-corrplot \
-    r-dharma \
-    r-flextable \
-    r-ggally \
-    r-ggeffects \
-    r-glmmtmb \
+    r-aiccmodavg\
+    r-corrplot\
+    r-dharma\
+    r-effectsize\
+    r-flextable\
+    r-ggally\
+    r-gganimate\
+    r-ggeffects\
+    r-gghighlight\
+    r-ggimage\
+    r-ggthemes\
+    r-glmmtmb\
+    r-gtsummary\
+    r-here\
     r-hmisc\
-    r-janitor \
-    r-magick \
-    r-mumin \
-    r-naniar \
-    r-palmerpenguins \
-    r-performance \
-    r-plotly \
-    r-skimr \
+    r-janitor\
+    r-magick\
+    r-modelsummary\
+    r-mumin\
+    r-naniar\
+    r-palmerpenguins\
+    r-performance\
+    r-plotly\
+    r-skimr\
     r-wesanderson
 
-RUN R -e "install.packages(c('lterdatasampler', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
+RUN R -e "install.packages(c('lterdatasampler', 'tvthemes', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
 RUN /usr/local/bin/fix-permissions "${CONDA_DIR}" || true
 
