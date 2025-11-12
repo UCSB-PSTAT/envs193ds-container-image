@@ -35,7 +35,9 @@ RUN conda install -y \
     r-skimr\
     r-wesanderson
 
-RUN R -e "install.packages(c('lterdatasampler', 'tvthemes', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
+RUN R -e "devtools::install_github('Ryo-N7/tvthemes')"
+
+RUN R -e "install.packages(c('lterdatasampler', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
 RUN /usr/local/bin/fix-permissions "${CONDA_DIR}" || true
 
