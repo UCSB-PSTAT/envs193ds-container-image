@@ -36,6 +36,7 @@ RUN conda install -y \
     r-wesanderson
 
 RUN R -e "devtools::install_github('Ryo-N7/tvthemes')"
+RUN R -e "devtools::install_github('gadenbuie/ggpomological', build_vignettes=TRUE)"
 
 RUN R -e "install.packages(c('lterdatasampler', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
