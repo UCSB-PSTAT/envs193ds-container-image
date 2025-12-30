@@ -32,6 +32,7 @@ RUN conda install -y \
     r-palmerpenguins\
     r-performance\
     r-plotly\
+    r-rstatix \
     r-skimr\
     r-wesanderson
 
