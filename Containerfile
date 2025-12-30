@@ -32,10 +32,13 @@ RUN conda install -y \
     r-palmerpenguins\
     r-performance\
     r-plotly\
+    r-rstatix \
     r-skimr\
     r-wesanderson
 
 RUN R -e "devtools::install_github('Ryo-N7/tvthemes')"
+
+RUN R -e "devtools::install_github('gadenbuie/ggpomological')"
 
 RUN R -e "install.packages(c('lterdatasampler', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
