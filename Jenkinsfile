@@ -37,7 +37,7 @@ pipeline {
                     steps {
                         container('podman') {
                             sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME which rstudio'
-                            sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME R -q -e "getRversion() >= \\"4.1.3\\"" | tee /dev/stderr | grep -q "TRUE"'
+                            sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME R -q -e "getRversion() >= \\"4.5.2\\"" | tee /dev/stderr | grep -q "TRUE"'
                             sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME R -e "library(\"AICcmodavg\")"'
                             sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME R -e "library(\"broom\")"'
                             sh 'podman run -it --rm --pull=never localhost/$IMAGE_NAME R -e "library(\"car\")"'
