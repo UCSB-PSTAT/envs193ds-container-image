@@ -40,6 +40,7 @@ RUN mamba install -y -c conda-forge\
 
 RUN Rscript -e "pak::pak('Ryo-N7/tvthemes')" &&\
     Rscript -e "pak::pak('gadenbuie/ggpomological')" &&\
-    Rscript -e "install.packages(c('lterdatasampler', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
+    Rscript -e "install.packages(c('lterdatasampler', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())" &&\
+    /usr/local/bin/fix-permissions "${CONDA_DIR}" || true
 
 USER $NB_USER
