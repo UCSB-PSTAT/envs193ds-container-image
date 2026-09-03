@@ -7,7 +7,7 @@ USER root
 ENV TZ America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN conda install -y \
+RUN mamba install -y -c conda-forge\
     r-aiccmodavg\
     r-corrplot\
     r-dharma\
@@ -34,16 +34,13 @@ RUN conda install -y \
     r-plotly\
     r-rstatix \
     r-skimr\
-    r-wesanderson
+    r-wesanderson &&\
+    mamba clean -afy &&\
+    /usr/local/bin/fix-permissions "${CONDA_DIR}" || true
 
-RUN R -e "devtools::install_github('Ryo-N7/tvthemes')"
-
-RUN R -e "devtools::install_github('gadenbuie/ggpomological')"
-
-RUN R -e "install.packages(c('lterdatasampler', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
-
-RUN /usr/local/bin/fix-permissions "${CONDA_DIR}" || true
-
+RUN Rscript -e "pak::pak('Ryo-N7/tvthemes')" &&\
+    Rscript -e "pak::pak('gadenbuie/ggpomological')" &&\
+    Rscript -e "install.packages(c('lterdatasampler', 'NatParksPalettes'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())" &&\
+    /usr/local/bin/fix-permissions "${CONDA_DIR}" || true
 
 USER $NB_USER
-
